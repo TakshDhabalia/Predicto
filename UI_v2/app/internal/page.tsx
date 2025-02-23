@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import ProtectedRoute from "../components/ProtectedRoute"
 
 export default function InternalTool() {
-  const [iframeUrl, setIframeUrl] = useState(null)
+  const [iframeUrl, setIframeUrl] = useState("")
 
   useEffect(() => {
     fetch("/api/ayd", {
