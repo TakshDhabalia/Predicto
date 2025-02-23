@@ -48,7 +48,7 @@ export default function TechnicalTool() {
                 value={productId}
                 onChange={(e) => setProductId(e.target.value)}
                 placeholder="Enter Product ID"
-                className="flex-grow p-2 border rounded text-black"
+                className="flex-grow p-2 border rounded"
               />
               <button
                 type="submit"
@@ -73,7 +73,7 @@ export default function TechnicalTool() {
                 value={customerId}
                 onChange={(e) => setCustomerId(e.target.value)}
                 placeholder="Enter Customer ID"
-                className="flex-grow p-2 border rounded text-black"
+                className="flex-grow p-2 border rounded"
               />
               <button
                 type="submit"
