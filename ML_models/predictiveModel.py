@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,7 +16,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.sparse import csr_matrix, hstack, vstack
 from sklearn.metrics.pairwise import cosine_similarity, cosine_distances
 import xgboost as xgb
+import warnings
 
+
+warnings.filterwarnings("ignore")
 
 
 
@@ -451,9 +455,21 @@ def main(customer_id, keyword):
 
 
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Predict purchase probability for a customer based on keyword search.")
+    
+  
+    parser.add_argument("--customer_id", type=str, required=True, help="Customer ID (e.g., 'LB-16795')")
+    parser.add_argument("--keyword", type=str, required=True, help="Keyword to search for products (e.g., 'Printer')")
 
-probability = main('LB-16795', 'Printer')
-print(probability)
+    args = parser.parse_args()
+    
+  
+    probability =main(args.customer_id, args.keyword)
+    print(f"The probability of buying {args.keyword} is : {probability}")
+
+# probability = main('LB-16795', 'Printer')
+# print(probability)
 
 
 
