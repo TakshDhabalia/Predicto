@@ -62,6 +62,3 @@ npm run dev
 - Taksh Dhabalia
 
 
-
-
-
