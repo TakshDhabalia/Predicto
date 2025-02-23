@@ -11,10 +11,9 @@ export default function TechnicalTool() {
   const [relatedProducts, setRelatedProducts] = useState<string[]>([])
   const [productProbability, setProductProbability] = useState<number | null>(null)
   const [apiResponse, setApiResponse] = useState<any>(null)
-  const [diagrams, setDiagrams] = useState([{ id: 1, content: "Diagram 1" }])
-  const [docs, setDocs] = useState([{ id: 1, content: "Documentation point 1" }])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [diagramImage, setDiagramImage] = useState("https://pjzcxlwwmvitfgsprjde.supabase.co/storage/v1/object/public/givingup//BMC.drawio.png") // Replace with actual image path
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -44,14 +43,6 @@ export default function TechnicalTool() {
     } finally {
       setLoading(false)
     }
-  }
-
-  const addDiagram = () => {
-    setDiagrams([...diagrams, { id: diagrams.length + 1, content: `Diagram ${diagrams.length + 1}` }])
-  }
-
-  const addDoc = () => {
-    setDocs([...docs, { id: docs.length + 1, content: `Documentation point ${docs.length + 1}` }])
   }
 
   return (
@@ -96,34 +87,21 @@ export default function TechnicalTool() {
         </div>
 
         <div className="bg-gray-800 shadow-md rounded-lg p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold text-gray-300">Diagrams</h2>
-            <button onClick={addDiagram} className="text-blue-400 hover:text-blue-500 transition duration-200">
-              <PlusCircle className="h-6 w-6" />
-            </button>
-          </div>
-          <div className="space-y-4">
-            {diagrams.map((diagram) => (
-              <div key={diagram.id} className="p-4 bg-gray-700 text-white rounded-md">
-                {diagram.content}
-              </div>
-            ))}
+          <h2 className="text-xl font-semibold text-gray-300 mb-4">Diagram</h2>
+          <div className="p-4 bg-gray-700 rounded-md flex justify-center">
+            <img src={diagramImage} alt="Diagram" className="max-w-full h-auto rounded-md" />
           </div>
         </div>
 
         <div className="bg-gray-800 shadow-md rounded-lg p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold text-gray-300">Documentation</h2>
-            <button onClick={addDoc} className="text-blue-400 hover:text-blue-500 transition duration-200">
+            <button className="text-blue-400 hover:text-blue-500 transition duration-200">
               <PlusCircle className="h-6 w-6" />
             </button>
           </div>
           <div className="space-y-4">
-            {docs.map((doc) => (
-              <div key={doc.id} className="p-4 bg-gray-700 text-white rounded-md">
-                {doc.content}
-              </div>
-            ))}
+            <div className="p-4 bg-gray-700 text-white rounded-md">Documentation point 1</div>
           </div>
         </div>
       </div>
