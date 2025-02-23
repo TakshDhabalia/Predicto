@@ -27,10 +27,10 @@ export default function Home() {
       </div>
 
       {/* Iframe Section */}
-      <aside className="w-[390px] h-[390px] border-l border-gray-300 shadow-lg">
+      <aside className="w-[400px] border-l border-gray-300 shadow-lg">
         <iframe
           className="w-full h-full"
-          style={{ height: "90vh" }}
+          style={{ height: "100vh" }}
           src={iframeUrl}
         ></iframe>
       </aside>
