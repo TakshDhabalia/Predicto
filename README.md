@@ -45,4 +45,11 @@ curl --location 'https://www.askyourdatabase.com/api/chatbot/v2/session' --heade
 
 "url":"https://www.askyourdatabase.com/api/chatbot/auth/callback?code=0bd063a8457f701b21583ab2e2fa95a87d8ca39b048ff19083bc7
 
-{"url":"https://www.askyourdatabase.com/api/chatbot/auth/callback?code=c7f840361b8728b8939f36d1c4a7ec60bb58412a8098cdff99f57fae05aaa24c"}ta
+{"url":"https://www.askyourdatabase.com/api/chatbot/auth/callback?code=c7f840361b8728b8939f36d1c4a7ec60bb58412a8098cdff99f57fae05aaa24c"}
+
+ssh -i "F:\AAAAA_Downloads\bmckey.pem" ubuntu@ec2-65-2-0-154.ap-south-1.compute.amazonaws.com
+
+python3 predictiveModel.py --customer_id "LB-16795" --keyword "Printer"
+
+
+curl -X POST "https://ae57-65-2-0-154.ngrok-free.app/predict" -H "Content-Type: application/json" -d '{"customer_id":"LB-16795","keyword":"Printer"}'
