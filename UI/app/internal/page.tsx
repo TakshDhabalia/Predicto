@@ -1,51 +1,39 @@
-"use client"
-import { useChat } from "ai/react"
+"use client";
+import { useEffect, useState } from "react";
 
-export default function InternalTool() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat()
+export default function Home() {
+  const [iframeUrl, setIframeUrl] = useState("");
+
+  useEffect(() => {
+    fetch("/api/ayd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then(({ url }) => {
+        setIframeUrl(url);
+      });
+  }, []);
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-blue-900">Internal Tool for Non-Technical Staff</h1>
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Chatbot Interface</h2>
-        <div className="space-y-4 h-64 overflow-y-auto mb-4 p-4 bg-gray-100 rounded-md">
-          {messages.map((m) => (
-            <div key={m.id} className={`p-2 rounded ${m.role === "user" ? "bg-blue-100" : "bg-green-100"}`}>
-              {m.content}
-            </div>
-          ))}
-        </div>
-        <form onSubmit={handleSubmit} className="flex space-x-2">
-          <input
-            className="flex-grow p-2 border rounded"
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Ask a question..."
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-200"
-          >
-            Send
-          </button>
-        </form>
+    <main className="flex h-screen">
+      {/* Main Content */}
+      <div className="flex-1 p-8">
+        <h1 className="text-2xl font-bold">Welcome</h1>
+        <p className="mt-2 text-gray-600">Your content goes here.</p>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Documentation</h2>
-        <div className="prose max-w-none">
-          {/* Add your documentation text here */}
-          <p>Placeholder for documentation text...</p>
-        </div>
-      </div>
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Diagrams</h2>
-        <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-md">
-          {/* Placeholder for diagram. Replace with actual diagram component or image */}
-          <div className="flex items-center justify-center text-gray-500">Diagram Placeholder</div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
+      {/* Iframe Section */}
+      <aside className="w-[390px] h-[390px] border-l border-gray-300 shadow-lg">
+        <iframe
+          className="w-full h-full"
+          style={{ height: "90vh" }}
+          src={iframeUrl}
+        ></iframe>
+      </aside>
+    </main>
+  );
+}
