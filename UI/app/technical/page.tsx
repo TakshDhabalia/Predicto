@@ -26,6 +26,7 @@ export default function TechnicalTool() {
     try {
       const response = await fetch("https://e742-65-2-0-154.ngrok-free.app/predict", {
         method: "POST",
+        mode: "no-cors", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       })
