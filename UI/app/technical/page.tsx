@@ -24,7 +24,7 @@ export default function TechnicalTool() {
     const payload = { customer_id: productId, keyword: customerId }
 
     try {
-      const response = await fetch("https://297c-65-2-0-154.ngrok-free.app/predict", {
+      const response = await fetch(" https://1426-65-2-0-154.ngrok-free.app/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
