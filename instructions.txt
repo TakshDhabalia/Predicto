@@ -59,3 +59,5 @@ new -
 curl -X POST "https://297c-65-2-0-154.ngrok-free.app/predict" \
      -H "Content-Type: application/json" \
      -d '{"customer_id":"LB-16795","keyword":"Printer"}'
+
+
