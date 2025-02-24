@@ -24,7 +24,7 @@ export default function TechnicalTool() {
     const payload = { customer_id: productId, keyword: customerId }
 
     try {
-      const response = await fetch("https://ae57-65-2-0-154.ngrok-free.app/predict", {
+      const response = await fetch("https://297c-65-2-0-154.ngrok-free.app/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -58,14 +58,14 @@ export default function TechnicalTool() {
                 type="text"
                 value={productId}
                 onChange={(e) => setProductId(e.target.value)}
-                placeholder="Enter Product ID"
+                placeholder="Enter Customer ID"
                 className="flex-grow p-2 border rounded bg-gray-700 text-white focus:ring-blue-400 focus:outline-none"
               />
               <input
                 type="text"
                 value={customerId}
                 onChange={(e) => setCustomerId(e.target.value)}
-                placeholder="Enter Customer ID"
+                placeholder="Enter Keyword"
                 className="flex-grow p-2 border rounded bg-gray-700 text-white focus:ring-blue-400 focus:outline-none"
               />
               <button
